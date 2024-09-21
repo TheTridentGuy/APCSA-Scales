@@ -3,17 +3,17 @@ int[][][] image = {{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 
 int pixel_size = 1;
 int img_x = 32;
 int img_y = 32;
-int tile_x = 20;
+int tile_x = 40;
 int tile_y = 50;
 int y_overlap = 18;
 
  
 // Processing BS, limiting my freedom >:( *eagle screeches*:
 public void setup() {
+  size(1280, 700);
 }
 
 void draw() {
-  windowResize(tile_x*pixel_size*img_x, (tile_y*pixel_size*img_y)-(tile_y*y_overlap));
   for(int x=0; x<tile_x; x++){
     for(int y=tile_y; y>0; y--){
       draw_image(image, (y*img_y)-(y_overlap*y), x*img_x, pixel_size);
@@ -32,7 +32,7 @@ void draw_image(int[][][] image, int x, int y, int pixel_size){
         pixel = new_color;
       }
       fill(pixel[0],pixel[1],pixel[2], (4==pixel.length)?pixel[3]:255);
-      square(y+pixel_y*pixel_size, x+pixel_x*pixel_size, pixel_size);
+      rect(y+pixel_y*pixel_size, x+pixel_x*pixel_size, pixel_size, pixel_size);
     }
   }
 }
